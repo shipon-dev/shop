@@ -1,17 +1,27 @@
-import '../global.css';
+import "~/global.css";
 
-import { Stack } from 'expo-router';
+import { SplashScreen, Stack } from "expo-router";
+import * as React from "react";
+import { PortalHost } from "~/components/primitives/portal";
+import { ThemeProvider } from "~/themes/ThemeProvider";
 
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
+export {
+  // Catch any errors thrown by the Layout component.
+  ErrorBoundary,
+} from "expo-router";
+
+// Prevent the splash screen from auto-hiding before getting the color scheme.
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  SplashScreen.hideAsync();
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-    </Stack>
+    <ThemeProvider>
+      <Stack>
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+      </Stack>
+      <PortalHost />
+    </ThemeProvider>
   );
 }
