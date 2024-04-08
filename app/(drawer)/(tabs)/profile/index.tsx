@@ -1,28 +1,14 @@
-import { Info } from "lucide-react-native";
-import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
-import Animated, {
-  FadeInUp,
-  FadeOutDown,
-  LayoutAnimationConfig,
-} from "react-native-reanimated";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
-import { Progress } from "~/components/ui/progress";
-import { Text } from "~/components/ui/text";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "~/components/ui/tooltip";
-import { ThemeSwitcher } from "~/themes/ThemeSwitcher";
+import { Info } from 'lucide-react-native';
+import React, { useState } from 'react';
+import { ScrollView, View } from 'react-native';
+import Animated, { FadeInUp, FadeOutDown, LayoutAnimationConfig } from 'react-native-reanimated';
+import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
+import { Button } from '~/components/ui/button';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
+import { Progress } from '~/components/ui/progress';
+import { Text } from '~/components/ui/text';
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
+import { ThemeSwitcher } from '~/themes/ThemeSwitcher';
 
 export default function index() {
   const [progress, setProgress] = useState(78);
@@ -31,8 +17,7 @@ export default function index() {
     setProgress(Math.floor(Math.random() * 100));
   }
 
-  const GITHUB_AVATAR_URI =
-    "https://avatars.githubusercontent.com/u/85027552?v=4";
+  const GITHUB_AVATAR_URI = 'https://avatars.githubusercontent.com/u/85027552?v=4';
   return (
     <ScrollView className="flex-1 bg-background">
       <View>
@@ -41,7 +26,7 @@ export default function index() {
       <View className="flex flex-1 items-center justify-center gap-5 py-5">
         <Card className="w-full max-w-sm p-6 rounded-2xl border">
           <CardHeader className="items-center">
-            <Avatar alt="Rick Sanchez's Avatar" className="w-24 h-24">
+            <Avatar alt="Shipon" className="w-24 h-24">
               <AvatarImage source={{ uri: GITHUB_AVATAR_URI }} />
               <AvatarFallback>
                 <Text>S</Text>
@@ -50,16 +35,10 @@ export default function index() {
             <View className="p-3" />
             <CardTitle className="pb-2 text-center">Md. Shipon Molla</CardTitle>
             <View className="flex-row items-center">
-              <CardDescription className="text-base font-semibold">
-                Developer
-              </CardDescription>
+              <CardDescription className="text-base font-semibold">Developer</CardDescription>
               <Tooltip delayDuration={150}>
                 <TooltipTrigger className="px-2 pb-0.5 active:opacity-50">
-                  <Info
-                    size={14}
-                    strokeWidth={2.5}
-                    className="w-4 h-4 text-foreground/70"
-                  />
+                  <Info size={14} strokeWidth={2.5} className="w-4 h-4 text-foreground/70" />
                 </TooltipTrigger>
                 <TooltipContent className="py-2 px-4 shadow">
                   <Text className="native:text-lg">Freelancer</Text>
@@ -70,9 +49,7 @@ export default function index() {
 
           <CardFooter className="flex-col gap-3 pb-0">
             <View className="flex-row items-center overflow-hidden">
-              <Text className="text-sm text-muted-foreground">
-                Productivity:
-              </Text>
+              <Text className="text-sm text-muted-foreground">Productivity:</Text>
               <LayoutAnimationConfig skipEntering>
                 <Animated.View
                   key={progress}
@@ -83,15 +60,9 @@ export default function index() {
                 </Animated.View>
               </LayoutAnimationConfig>
             </View>
-            <Progress
-              value={progress}
-              className="h-2"
-              indicatorClassName="bg-primary"
-            />
+            <Progress value={progress} className="h-2" indicatorClassName="bg-primary" />
             <View />
-            <Button
-              className="shadow shadow-foreground/5"
-              onPress={updateProgressValue}>
+            <Button className="shadow shadow-foreground/5" onPress={updateProgressValue}>
               <Text className="text-white">Update</Text>
             </Button>
           </CardFooter>
