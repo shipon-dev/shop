@@ -16,11 +16,11 @@ export default function Slider() {
   return (
     <Swiper {...controler}>
       <View className="flex-1 gap-5">
-        <Text className="text-5xl font-extrabold text-center text-black capitalize leading-tight">
+        <Text className="text-5xl font-extrabold text-center text-foreground capitalize leading-tight">
           The <Text className="text-primary">fastest</Text> in deliver{' '}
           <Text className="text-primary">food</Text>
         </Text>
-        <Text className="text-2xl font-medium text-center text-black leading-snug">
+        <Text className="text-2xl font-medium text-center text-muted-foreground leading-snug">
           Our jobs is to filling your tummy with delicious food and fast delivery
         </Text>
         <Pressable
@@ -32,11 +32,11 @@ export default function Slider() {
         </Pressable>
       </View>
       <View className="flex-1 gap-5">
-        <Text className="text-5xl font-extrabold text-center text-black capitalize leading-tight">
+        <Text className="text-5xl font-extrabold text-center text-foreground capitalize leading-tight">
           2 The <Text className="text-primary">fastest</Text> in deliver{' '}
           <Text className="text-primary">food</Text>
         </Text>
-        <Text className="text-2xl font-medium text-center text-black leading-snug">
+        <Text className="text-2xl font-medium text-center text-muted-foreground leading-snug">
           Our jobs is to filling your tummy with delicious food and fast delivery
         </Text>
         <Pressable
@@ -48,11 +48,11 @@ export default function Slider() {
         </Pressable>
       </View>
       <View className="flex-1 gap-5">
-        <Text className="text-5xl font-extrabold text-center text-black capitalize leading-tight">
+        <Text className="text-5xl font-extrabold text-center text-foreground capitalize leading-tight">
           3 The <Text className="text-primary">fastest</Text> in deliver{' '}
           <Text className="text-primary">food</Text>
         </Text>
-        <Text className="text-2xl font-medium text-center text-black leading-snug">
+        <Text className="text-2xl font-medium text-center text-muted-foreground leading-snug">
           Our jobs is to filling your tummy with delicious food and fast delivery
         </Text>
         <Pressable

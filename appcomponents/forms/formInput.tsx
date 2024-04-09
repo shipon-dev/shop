@@ -18,6 +18,8 @@ const FormInput = ({
   secureTextEntry,
   leftIcon,
   rightIcon,
+  multiline,
+  defaultValue,
 }: {
   control: any;
   name: string;
@@ -31,6 +33,8 @@ const FormInput = ({
   secureTextEntry?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  multiline?: boolean;
+  defaultValue?: string;
 }) => {
   return (
     <Controller
@@ -42,7 +46,8 @@ const FormInput = ({
           <View
             className={cn(
               'relative flex-row w-full border border-input rounded-md h-10 native:h-12 overflow-hidden',
-              className
+              className,
+              multiline && 'min-h-28 h-28 native:h-28'
             )}>
             {leftIcon && leftIcon}
             <Input
@@ -54,8 +59,14 @@ const FormInput = ({
               maxLength={maxLength}
               nativeID={id}
               ref={ref}
-              className={cn('border-none flex-1')}
+              className={cn(
+                'border-none flex-1',
+                multiline && 'min-h-28 h-28 native:h-28',
+                readOnly && 'bg-muted text-foreground/50'
+              )}
               secureTextEntry={secureTextEntry}
+              multiline={multiline}
+              defaultValue={defaultValue}
             />
             {rightIcon && rightIcon}
           </View>

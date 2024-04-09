@@ -21,7 +21,7 @@ export default function Welcome() {
         </Animation.View>
         <Animation.View
           entering={FadeInUp}
-          className="px-5 py-20 h-full bg-white rounded-t-[5.5rem]">
+          className="px-5 py-20 h-full bg-background rounded-t-[5.5rem]">
           <Slider />
         </Animation.View>
       </View>

@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import FormInput from '~/appcomponents/forms/formInput';
 import { Eye } from '~/components/Icons';
+import { Link } from 'expo-router';
 
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -68,10 +69,16 @@ export default function Signin() {
             secureTextEntry={!showPassword}
           />
           <View className="w-full gap-2">
-            <Button onPress={handleSubmit(onSubmit)} className="">
+            <Button onPress={handleSubmit(onSubmit)}>
               <Text className="text-white font-bold text-center">Submit</Text>
             </Button>
           </View>
+          <Text className="text-lg text-muted-foreground">
+            Don't have an account?{' '}
+            <Link href={'/(auth)/signup'} className="text-primary">
+              Sign Up
+            </Link>
+          </Text>
         </View>
       </Card>
     </View>
