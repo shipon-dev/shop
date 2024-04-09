@@ -9,13 +9,15 @@ import {
   BarChart,
   Bell,
   LogOut,
-} from "lucide-react-native";
-import { cssInterop } from "nativewind";
+  Eye,
+  EyeOff,
+} from 'lucide-react-native';
+import { cssInterop } from 'nativewind';
 
 function interopIcon(icon: LucideIcon) {
   cssInterop(icon, {
     className: {
-      target: "style",
+      target: 'style',
       nativeStyleToProp: {
         color: true,
         opacity: true,
@@ -26,7 +28,7 @@ function interopIcon(icon: LucideIcon) {
   });
 }
 
-const icons = [Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut];
+const icons = [Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut, Eye, EyeOff];
 icons.forEach((icon) => interopIcon(icon));
 
-export { Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut };
+export { Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut, Eye, EyeOff };

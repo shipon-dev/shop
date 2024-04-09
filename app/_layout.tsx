@@ -4,6 +4,9 @@ import { SplashScreen, Stack } from 'expo-router';
 import * as React from 'react';
 import { PortalHost } from '~/components/primitives/portal';
 import { ThemeProvider } from '~/themes/ThemeProvider';
+import { useColorScheme } from '~/lib/useColorScheme';
+import { StatusBarColor } from '~/themes/theme-config';
+import { useClientOnlyValue } from '~/components/useClientOnlyValue';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -15,9 +18,22 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   SplashScreen.hideAsync();
+  const { isDarkColorScheme } = useColorScheme();
+
+  const IsDark = isDarkColorScheme ? 'dark' : 'light';
+  const Color = StatusBarColor[IsDark];
   return (
     <ThemeProvider>
-      <Stack>
+      <Stack
+        screenOptions={{
+          headerShown: useClientOnlyValue(false, true),
+          headerStyle: {
+            backgroundColor: Color.background,
+          },
+          headerTintColor: Color.foreground,
+        }}>
+        <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
