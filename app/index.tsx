@@ -1,30 +1,52 @@
+import { Link } from 'expo-router';
 import React from 'react';
-import { View } from 'react-native';
-import Animation, { FadeInDown, FadeInUp } from 'react-native-reanimated';
-import Slider from '~/appcomponents/slider/slider';
-import { Avatar, AvatarImage } from '~/components/ui/avatar';
+import { Image, ScrollView, Text, View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+import { PathLine } from '~/components/Svg';
+import useMultipleColor from '~/lib/hooks/useMultipleColor';
+import { useColorScheme } from '~/lib/useColorScheme';
+import { Themes } from '~/themes/theme-config';
 
-export default function Welcome() {
+const Home = () => {
+  const { isDarkColorScheme } = useColorScheme();
+  const { themeColor } = useMultipleColor();
+
+  const IsDark = isDarkColorScheme ? 'dark' : 'light';
+  const CurrentTheme = Themes.find((theme) => theme.name === themeColor);
+  const ActiveColor = `hsl(${CurrentTheme?.activeColor[IsDark]})`;
   return (
-    <View className="flex-1 bg-primary">
-      <View className="w-full h-1/2 mx-auto absolute bottom-0 gap-5">
-        <Animation.View entering={FadeInDown}>
-          <View className="absolute -bottom-5 left-1/2 -translate-x-1/2">
-            <Avatar alt="FS" className="relative rounded-none w-full h-96 ">
-              <AvatarImage
-                source={require('~/assets/images/man.png')}
-                resizeMethod="resize"
-                resizeMode="contain"
-              />
-            </Avatar>
+    <ScrollView className="flex-1 bg-background">
+      <View className="">
+        <View className="w-full flex justify-center items-center h-full px-4">
+          <Image
+            source={require('~/assets/images/cards.png')}
+            className="w-full h-96"
+            resizeMode="contain"
+          />
+        </View>
+        <View className="">
+          <View>
+            <Text className="text-foreground font-bold text-4xl text-center">
+              Discover Endless Possibilities with{' '}
+              <View className="relative">
+                <Text className="text-foreground font-bold text-4xl">
+                  Aora
+                  <View className="">
+                    <PathLine className="absolute -left-20 -bottom-7 text-primary h-10 w-32" />
+                  </View>
+                </Text>
+              </View>
+            </Text>
+            {/* <Link
+              href={'/old/(drawer)/(tabs)/profile'}
+              className="text-foreground text-3xl bg-primary text-center p-5">
+              Profile
+            </Link> */}
           </View>
-        </Animation.View>
-        <Animation.View
-          entering={FadeInUp}
-          className="px-5 py-20 h-full bg-background rounded-t-[5.5rem]">
-          <Slider />
-        </Animation.View>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
-}
+};
+
+export default Home;

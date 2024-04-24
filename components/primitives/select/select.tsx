@@ -1,4 +1,8 @@
-import { useControllableState, useRelativePosition, type LayoutPosition } from '~/components/primitives/hooks';
+import {
+  useControllableState,
+  useRelativePosition,
+  type LayoutPosition,
+} from '~/components/primitives/hooks';
 import { Portal as RNPPortal } from '~/components/primitives/portal';
 import * as Slot from '~/components/primitives/slot';
 import type {
@@ -85,8 +89,7 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & SelectRootProps>(
           setContentLayout,
           setTriggerPosition,
           triggerPosition,
-        }}
-      >
+        }}>
         <Component ref={ref} {...viewProps} />
       </RootContext.Provider>
     );
@@ -133,7 +136,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
       <Component
         ref={triggerRef}
         aria-disabled={disabled ?? undefined}
-        role='combobox'
+        role="combobox"
         onPress={onPress}
         disabled={disabled ?? disabledRoot}
         aria-expanded={open}
@@ -284,7 +287,7 @@ const Content = React.forwardRef<
     return (
       <Component
         ref={ref}
-        role='list'
+        role="list"
         nativeID={nativeID}
         aria-modal={true}
         style={[positionStyle, style]}
@@ -334,7 +337,7 @@ const Item = React.forwardRef<PressableRef, SlottablePressableProps & SelectItem
       <ItemContext.Provider value={{ itemValue, label }}>
         <Component
           ref={ref}
-          role='option'
+          role="option"
           onPress={onPress}
           disabled={disabled}
           aria-checked={value?.value === itemValue}
@@ -387,7 +390,7 @@ const ItemIndicator = React.forwardRef<ViewRef, SlottableViewProps & ForceMounta
       }
     }
     const Component = asChild ? Slot.View : View;
-    return <Component ref={ref} role='presentation' {...props} />;
+    return <Component ref={ref} role="presentation" {...props} />;
   }
 );
 
@@ -395,7 +398,7 @@ ItemIndicator.displayName = 'ItemIndicatorNativeSelect';
 
 const Group = React.forwardRef<ViewRef, SlottableViewProps>(({ asChild, ...props }, ref) => {
   const Component = asChild ? Slot.View : View;
-  return <Component ref={ref} role='group' {...props} />;
+  return <Component ref={ref} role="group" {...props} />;
 });
 
 Group.displayName = 'GroupNativeSelect';

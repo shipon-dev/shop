@@ -51,6 +51,7 @@ const FormInput = ({
             )}>
             {leftIcon && leftIcon}
             <Input
+              aria-labelledby={id}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}

@@ -68,16 +68,14 @@ const Root = React.forwardRef<ViewRef, SlottableViewProps & SelectRootProps>(
           onValueChange,
           open,
           onOpenChange,
-        }}
-      >
+        }}>
         <Select.Root
           value={value?.value}
           defaultValue={defaultValue?.value}
           onValueChange={onStrValueChange}
           open={open}
           defaultOpen={defaultOpen}
-          onOpenChange={onOpenChange}
-        >
+          onOpenChange={onOpenChange}>
           <Component ref={ref} {...viewProps} />
         </Select.Root>
       </SelectContext.Provider>
@@ -111,7 +109,7 @@ const Trigger = React.forwardRef<PressableRef, SlottablePressableProps>(
     const Component = asChild ? Slot.Pressable : Pressable;
     return (
       <Select.Trigger disabled={disabled ?? undefined} asChild>
-        <Component ref={augmentedRef} role='button' disabled={disabled} {...props} />
+        <Component ref={augmentedRef} role="button" disabled={disabled} {...props} />
       </Select.Trigger>
     );
   }
@@ -178,8 +176,7 @@ const Content = React.forwardRef<
         sideOffset={sideOffset}
         alignOffset={alignOffset}
         avoidCollisions={avoidCollisions}
-        position={position}
-      >
+        position={position}>
         <Component ref={ref} {...props} />
       </Select.Content>
     );

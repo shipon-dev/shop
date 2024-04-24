@@ -375,7 +375,7 @@ export const Themes = [
 
 export type ThemesType = (typeof Themes)[number];
 
-export const StatusBarColor = {
+export const BarColor = {
   light: {
     background: '#fff',
     foreground: '#000',

@@ -24,10 +24,9 @@ const SelectTrigger = React.forwardRef<
       props.disabled && 'web:cursor-not-allowed opacity-50',
       className
     )}
-    {...props}
-  >
+    {...props}>
     <>{children}</>
-    <ChevronDown size={16} aria-hidden={true} className='text-foreground opacity-50' />
+    <ChevronDown size={16} aria-hidden={true} className="text-foreground opacity-50" />
   </SelectPrimitive.Trigger>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
@@ -45,9 +44,8 @@ const SelectScrollUpButton = ({
   return (
     <SelectPrimitive.ScrollUpButton
       className={cn('flex web:cursor-default items-center justify-center py-1', className)}
-      {...props}
-    >
-      <ChevronUp size={14} className='text-foreground' />
+      {...props}>
+      <ChevronUp size={14} className="text-foreground" />
     </SelectPrimitive.ScrollUpButton>
   );
 };
@@ -65,9 +63,8 @@ const SelectScrollDownButton = ({
   return (
     <SelectPrimitive.ScrollDownButton
       className={cn('flex web:cursor-default items-center justify-center py-1', className)}
-      {...props}
-    >
-      <ChevronDown size={14} className='text-foreground' />
+      {...props}>
+      <ChevronDown size={14} className="text-foreground" />
     </SelectPrimitive.ScrollDownButton>
   );
 };
@@ -94,16 +91,14 @@ const SelectContent = React.forwardRef<
               className
             )}
             position={position}
-            {...props}
-          >
+            {...props}>
             <SelectScrollUpButton />
             <SelectPrimitive.Viewport
               className={cn(
                 'p-1',
                 position === 'popper' &&
                   'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]'
-              )}
-            >
+              )}>
               {children}
             </SelectPrimitive.Viewport>
             <SelectScrollDownButton />
@@ -141,15 +136,14 @@ const SelectItem = React.forwardRef<
       props.disabled && 'web:pointer-events-none opacity-50',
       className
     )}
-    {...props}
-  >
-    <View className='absolute left-2 native:left-3.5 flex h-3.5 native:pt-px w-3.5 items-center justify-center'>
+    {...props}>
+    <View className="absolute left-2 native:left-3.5 flex h-3.5 native:pt-px w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check size={16} strokeWidth={3} className='text-popover-foreground' />
+        <Check size={16} strokeWidth={3} className="text-popover-foreground" />
       </SelectPrimitive.ItemIndicator>
     </View>
 
-    <SelectPrimitive.ItemText className='text-sm native:text-lg text-popover-foreground native:text-base web:group-focus:text-accent-foreground' />
+    <SelectPrimitive.ItemText className="text-sm native:text-lg text-popover-foreground native:text-base web:group-focus:text-accent-foreground" />
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;

@@ -11,6 +11,9 @@ import {
   LogOut,
   Eye,
   EyeOff,
+  ChevronUp,
+  ChevronDown,
+  Check,
 } from 'lucide-react-native';
 import { cssInterop } from 'nativewind';
 
@@ -28,7 +31,37 @@ function interopIcon(icon: LucideIcon) {
   });
 }
 
-const icons = [Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut, Eye, EyeOff];
+const icons = [
+  Home,
+  Menu,
+  Info,
+  MoonStar,
+  Sun,
+  User,
+  BarChart,
+  Bell,
+  LogOut,
+  Eye,
+  EyeOff,
+  ChevronUp,
+  ChevronDown,
+  Check,
+];
 icons.forEach((icon) => interopIcon(icon));
 
-export { Home, Menu, Info, MoonStar, Sun, User, BarChart, Bell, LogOut, Eye, EyeOff };
+export {
+  Home,
+  Menu,
+  Info,
+  MoonStar,
+  Sun,
+  User,
+  BarChart,
+  Bell,
+  LogOut,
+  Eye,
+  EyeOff,
+  ChevronUp,
+  ChevronDown,
+  Check,
+};

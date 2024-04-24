@@ -2,7 +2,6 @@ import '~/global.css';
 
 import { SplashScreen, Stack } from 'expo-router';
 import * as React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { PortalHost } from '~/components/primitives/portal';
 import { useClientOnlyValue } from '~/components/useClientOnlyValue';
 import { useColorScheme } from '~/lib/useColorScheme';
@@ -24,26 +23,24 @@ export default function RootLayout() {
   const IsDark = isDarkColorScheme ? 'dark' : 'light';
   const Color = BarColor[IsDark];
 
+  console.log(IsDark);
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: Color.background,
-        height: '100%',
-      }}>
-      <ThemeProvider>
-        <Stack
-          screenOptions={{
-            headerShown: useClientOnlyValue(false, true),
-            headerStyle: {
-              backgroundColor: Color.background,
-            },
-            headerTintColor: Color.foreground,
-          }}>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        </Stack>
-        <PortalHost />
-      </ThemeProvider>
-    </SafeAreaView>
+    <ThemeProvider>
+      <Stack
+        screenOptions={{
+          headerShown: useClientOnlyValue(false, true),
+          headerStyle: {
+            backgroundColor: Color.background,
+          },
+          headerTintColor: Color.foreground,
+        }}>
+        <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />
+        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+      </Stack>
+      <PortalHost />
+    </ThemeProvider>
   );
 }

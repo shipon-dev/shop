@@ -10,10 +10,43 @@ import * as z from 'zod';
 import FormInput from '~/appcomponents/forms/formInput';
 import { Eye } from '~/components/Icons';
 import { Link } from 'expo-router';
+import FormInputSelect from '~/appcomponents/forms/formInputSelect';
+
+const data = [
+  {
+    value: 'Apple',
+  },
+  {
+    value: 'Banana',
+  },
+  {
+    value: 'Blueberry',
+    disabled: true,
+  },
+  {
+    value: 'Grapes',
+  },
+  {
+    value: 'Pineapple',
+  },
+];
 
 const formSchema = z.object({
   email: z.string().email('Please enter a valid email'),
   password: z.string().min(8, 'Password must be at least 8 characters'),
+  message: z.string(),
+  fruit: z
+    .string()
+    .or(z.object({ value: z.string() }))
+    .transform((val) => {
+      // If the value is an object, extract the 'value' property
+      if (typeof val === 'object' && val !== null) {
+        return val.value || '';
+      }
+      // Otherwise, return the value as is
+      return val;
+    })
+    .default(data[1].value),
 });
 
 type SignupFormValues = z.infer<typeof formSchema>;
@@ -23,6 +56,8 @@ export default function Signup() {
   const defaultValues: Partial<SignupFormValues> = {
     email: undefined,
     password: undefined,
+    message: undefined,
+    fruit: undefined,
   };
 
   const { control, handleSubmit } = useForm({
@@ -45,13 +80,14 @@ export default function Signup() {
             label={'Email'}
             placeholder={'Email'}
           />
-          <FormInput
-            id="email"
+          <FormInputSelect
+            id="fruit"
             control={control}
-            name={'email'}
-            label={'Email'}
-            placeholder={'Email'}
-            readOnly={true}
+            name={'fruit'}
+            label={'Fruit'}
+            placeholder={'Select fruit'}
+            data={data}
+            defaultValue={data[1].value}
           />
           <FormInput
             id="message"
@@ -95,6 +131,9 @@ export default function Signup() {
               Sign In
             </Link>
           </Text>
+          <Link href={'/(drawer)/(tabs)'} className="text-primary text-xl">
+            Drawer
+          </Link>
         </View>
       </Card>
     </View>

@@ -1,14 +1,14 @@
-import { Drawer } from "expo-router/drawer";
-import CustomDrawer from "~/appcomponents/navigations/customDrawer";
-import { useClientOnlyValue } from "~/components/useClientOnlyValue";
-import { useColorScheme } from "~/lib/useColorScheme";
-import { StatusBarColor } from "~/themes/theme-config";
+import { Drawer } from 'expo-router/drawer';
+import CustomDrawer from '~/appcomponents/navigations/customDrawer';
+import { useClientOnlyValue } from '~/components/useClientOnlyValue';
+import { useColorScheme } from '~/lib/useColorScheme';
+import { BarColor } from '~/themes/theme-config';
 
 export default function RootLayout() {
   const { isDarkColorScheme } = useColorScheme();
 
-  const IsDark = isDarkColorScheme ? "dark" : "light";
-  const Color = StatusBarColor[IsDark];
+  const IsDark = isDarkColorScheme ? 'dark' : 'light';
+  const Color = BarColor[IsDark];
 
   return (
     <Drawer
@@ -25,7 +25,7 @@ export default function RootLayout() {
         drawerLabelStyle: {
           fontSize: 14,
           lineHeight: 20,
-          fontWeight: "600",
+          fontWeight: '600',
         },
       }}>
       <Drawer.Screen
@@ -37,7 +37,7 @@ export default function RootLayout() {
       <Drawer.Screen
         name="notifications"
         options={{
-          title: "Notifications",
+          title: 'Notifications',
           headerShown: true,
         }}
       />
