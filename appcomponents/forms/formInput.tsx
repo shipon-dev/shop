@@ -42,7 +42,11 @@ const FormInput = ({
       name={name}
       render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
         <View className="w-full gap-2">
-          {label && <Label nativeID={id}>{label}</Label>}
+          {label && (
+            <Label className="font-semibold text-foreground" nativeID={id}>
+              {label}
+            </Label>
+          )}
           <View
             className={cn(
               'relative flex-row w-full border border-input rounded-md h-10 native:h-12 overflow-hidden',
@@ -61,7 +65,7 @@ const FormInput = ({
               nativeID={id}
               ref={ref}
               className={cn(
-                'border-none flex-1',
+                'border-none border-0 flex-1',
                 multiline && 'min-h-28 h-28 native:h-28',
                 readOnly && 'bg-muted text-foreground/50'
               )}

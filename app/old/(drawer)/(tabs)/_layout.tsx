@@ -2,34 +2,23 @@ import { DrawerToggleButton } from '@react-navigation/drawer';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import CustomTabBar from '~/appcomponents/navigations/customTabBar';
-import { Home, User } from '~/components/Icons';
 import { useClientOnlyValue } from '~/components/useClientOnlyValue';
-import useMultipleColor from '~/lib/hooks/useMultipleColor';
-import { useColorScheme } from '~/lib/useColorScheme';
-import { cn } from '~/lib/utils';
-import { BarColor, Themes, TintColor } from '~/themes/theme-config';
+import { Theme } from '~/lib/utils';
 
 export default function _layout() {
-  const { isDarkColorScheme } = useColorScheme();
-  const { themeColor } = useMultipleColor();
-
-  const IsDark = isDarkColorScheme ? 'dark' : 'light';
-  const CurrentTheme = Themes.find((theme) => theme.name === themeColor);
-  const ActiveColor = `hsl(${CurrentTheme?.activeColor[IsDark]})`;
-  const TabBarInactiveTintColor = TintColor[IsDark];
-  const Color = BarColor[IsDark];
+  const { activeColor, barColor, tinColor } = Theme();
 
   return (
     <Tabs
       tabBar={() => <CustomTabBar />}
       screenOptions={{
         headerShown: useClientOnlyValue(false, true),
-        tabBarActiveTintColor: ActiveColor,
-        tabBarInactiveTintColor: TabBarInactiveTintColor,
+        tabBarActiveTintColor: activeColor,
+        tabBarInactiveTintColor: tinColor,
         headerStyle: {
-          backgroundColor: Color.background,
+          backgroundColor: barColor.background,
         },
-        headerTintColor: Color.foreground,
+        headerTintColor: barColor.foreground,
         headerLeft: ({ tintColor }) => <DrawerToggleButton tintColor={tintColor} />,
       }}>
       <Tabs.Screen

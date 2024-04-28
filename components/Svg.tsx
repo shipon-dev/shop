@@ -1,4 +1,5 @@
 import { cssInterop } from 'nativewind';
+import Logo from '~/appcomponents/svg/logo';
 import PathLine from '~/appcomponents/svg/pathLine';
 
 function interopIcon(icon: any) {
@@ -16,6 +17,7 @@ function interopIcon(icon: any) {
   });
 }
 
-interopIcon(PathLine);
+const svgs = [PathLine, Logo];
+svgs.forEach((svg) => interopIcon(svg));
 
-export { PathLine };
+export { PathLine, Logo };

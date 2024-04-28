@@ -7,6 +7,7 @@ import { useClientOnlyValue } from '~/components/useClientOnlyValue';
 import { useColorScheme } from '~/lib/useColorScheme';
 import { ThemeProvider } from '~/themes/ThemeProvider';
 import { BarColor } from '~/themes/theme-config';
+import { Theme } from '~/lib/utils';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -18,21 +19,17 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   SplashScreen.hideAsync();
-  const { isDarkColorScheme } = useColorScheme();
+  const { barColor } = Theme();
 
-  const IsDark = isDarkColorScheme ? 'dark' : 'light';
-  const Color = BarColor[IsDark];
-
-  console.log(IsDark);
   return (
     <ThemeProvider>
       <Stack
         screenOptions={{
           headerShown: useClientOnlyValue(false, true),
           headerStyle: {
-            backgroundColor: Color.background,
+            backgroundColor: barColor.background,
           },
-          headerTintColor: Color.foreground,
+          headerTintColor: barColor.foreground,
         }}>
         <Stack.Screen name="(auth)/signin" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)/signup" options={{ headerShown: false }} />

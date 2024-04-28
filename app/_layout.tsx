@@ -5,9 +5,8 @@ import * as React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { PortalHost } from '~/components/primitives/portal';
 import { useClientOnlyValue } from '~/components/useClientOnlyValue';
-import { useColorScheme } from '~/lib/useColorScheme';
+import { Theme } from '~/lib/utils';
 import { ThemeProvider } from '~/themes/ThemeProvider';
-import { BarColor } from '~/themes/theme-config';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -19,15 +18,12 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   SplashScreen.hideAsync();
-  const { isDarkColorScheme } = useColorScheme();
-
-  const IsDark = isDarkColorScheme ? 'dark' : 'light';
-  const Color = BarColor[IsDark];
+  const { barColor } = Theme();
 
   return (
     <SafeAreaView
       style={{
-        backgroundColor: Color.background,
+        backgroundColor: barColor.background,
         height: '100%',
       }}>
       <ThemeProvider>
@@ -35,11 +31,13 @@ export default function RootLayout() {
           screenOptions={{
             headerShown: useClientOnlyValue(false, true),
             headerStyle: {
-              backgroundColor: Color.background,
+              backgroundColor: barColor.background,
             },
-            headerTintColor: Color.foreground,
+            headerTintColor: barColor.foreground,
           }}>
           <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(main)" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
         </Stack>
         <PortalHost />

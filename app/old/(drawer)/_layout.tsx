@@ -1,14 +1,10 @@
 import { Drawer } from 'expo-router/drawer';
 import CustomDrawer from '~/appcomponents/navigations/customDrawer';
 import { useClientOnlyValue } from '~/components/useClientOnlyValue';
-import { useColorScheme } from '~/lib/useColorScheme';
-import { BarColor } from '~/themes/theme-config';
+import { Theme } from '~/lib/utils';
 
 export default function RootLayout() {
-  const { isDarkColorScheme } = useColorScheme();
-
-  const IsDark = isDarkColorScheme ? 'dark' : 'light';
-  const Color = BarColor[IsDark];
+  const { barColor } = Theme();
 
   return (
     <Drawer
@@ -16,11 +12,11 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: useClientOnlyValue(false, true),
         headerStyle: {
-          backgroundColor: Color.background,
+          backgroundColor: barColor.background,
         },
-        headerTintColor: Color.foreground,
+        headerTintColor: barColor.foreground,
         drawerStyle: {
-          backgroundColor: Color.background,
+          backgroundColor: barColor.background,
         },
         drawerLabelStyle: {
           fontSize: 14,

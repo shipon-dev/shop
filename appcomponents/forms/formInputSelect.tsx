@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
-import { ScrollView, Text, View } from 'react-native';
+import { Platform, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Label } from '~/components/ui/label';
 import {
@@ -50,10 +50,13 @@ const FormInputSelect = ({
       control={control}
       name={name}
       render={({ field: { value, onChange }, fieldState: { error } }) => {
-        console.log;
         return (
           <View className="w-full gap-2">
-            {label && <Label nativeID={id}>{label}</Label>}
+            {label && (
+              <Label className="font-semibold text-foreground" nativeID={id}>
+                {label}
+              </Label>
+            )}
             <Select
               aria-labelledby={id}
               defaultValue={{ value: defaultValue, label: defaultValue }}
@@ -70,7 +73,8 @@ const FormInputSelect = ({
                 insets={contentInsets}
                 style={{
                   width: triggerWidth,
-                }}>
+                }}
+                className={cn(Platform.OS !== 'web' && '-mt-16')}>
                 <ScrollView>
                   <SelectGroup>
                     {data?.map((item, i) => {

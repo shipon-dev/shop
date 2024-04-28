@@ -1,21 +1,13 @@
 import { View, ViewProps } from 'react-native';
-import useMultipleColor from '~/lib/hooks/useMultipleColor';
-import { useColorScheme } from '~/lib/useColorScheme';
-import { cn } from '~/lib/utils';
-import { Themes } from '~/themes/theme-config';
+import { Theme, cn } from '~/lib/utils';
 
 type ThemeProps = ViewProps;
 
 export function ThemeProvider(props: ThemeProps) {
-  const { isDarkColorScheme } = useColorScheme();
-  const { themeColor } = useMultipleColor();
-
-  const currentTheme = Themes.find((theme) => theme.name === themeColor)?.cssVars[
-    isDarkColorScheme ? 'dark' : 'light'
-  ];
+  const { primaryTheme } = Theme();
 
   return (
-    <View style={currentTheme} className={cn('flex-1 bg-background', props.className)}>
+    <View style={primaryTheme} className={cn('flex-1 bg-background', props.className)}>
       {props.children}
     </View>
   );
