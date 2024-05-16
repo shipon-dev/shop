@@ -4,13 +4,12 @@ import { Button } from '~/components/ui/button';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'expo-router';
-import { EyeOff } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import AuthLayout from '~/appcomponents/auth/authLayout';
 import FormInput from '~/appcomponents/forms/formInput';
 import FormInputSelect from '~/appcomponents/forms/formInputSelect';
-import { Eye } from '~/components/Icons';
+import { Eye, EyeOff } from '~/components/Icons';
 
 const data = [
   {
@@ -95,6 +94,7 @@ export default function Signup() {
                 data={data}
                 defaultValue={data[1].value}
               />
+
               <FormInput
                 id="description"
                 control={control}

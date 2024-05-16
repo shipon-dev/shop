@@ -14,6 +14,10 @@ import {
   ChevronUp,
   ChevronDown,
   Check,
+  PlusCircle,
+  BookMarked,
+  Search,
+  MoreVertical,
 } from 'lucide-react-native';
 import { cssInterop } from 'nativewind';
 
@@ -46,6 +50,10 @@ const icons = [
   ChevronUp,
   ChevronDown,
   Check,
+  PlusCircle,
+  BookMarked,
+  Search,
+  MoreVertical,
 ];
 icons.forEach((icon) => interopIcon(icon));
 
@@ -64,4 +72,8 @@ export {
   ChevronUp,
   ChevronDown,
   Check,
+  PlusCircle,
+  BookMarked,
+  Search,
+  MoreVertical,
 };

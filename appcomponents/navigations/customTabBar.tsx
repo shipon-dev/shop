@@ -1,48 +1,73 @@
-import { View, Text, TouchableOpacity } from "react-native";
-import React from "react";
-import { cn } from "~/lib/utils";
-import { Home, User } from "~/components/Icons";
-import { usePathname, useRouter } from "expo-router";
+import { View, Text, Pressable } from 'react-native';
+import React from 'react';
+import { Home, User } from '~/components/Icons';
+import { cn } from '~/lib/utils';
 
-export default function CustomTabBar() {
-  const path = usePathname();
-  const router = useRouter();
-
+export default function CustomTabBar({
+  state,
+  descriptors,
+  navigation,
+}: {
+  state: any;
+  descriptors: any;
+  navigation: any;
+}) {
   const bottomNav = [
     {
       icon: Home,
-      link: "/",
+      link: '/home',
     },
     {
       icon: User,
-      link: "/profile",
+      link: '/profile',
     },
   ];
 
   return (
     <View className="flex-row bg-background p-5 relative h-24 flex items-center justify-center border-t border-muted">
-      {bottomNav?.map((item: any, index: number) => {
-        const isActive = item?.link === path;
+      {state.routes.map((route: any, index: number) => {
+        const { options } = descriptors[route.key];
+        const label =
+          options.tabBarLabel !== undefined
+            ? options.tabBarLabel
+            : options.title !== undefined
+            ? options.title
+            : route.name;
+
+        const isFocused = state.index === index;
 
         const onPress = () => {
-          router.navigate(item?.link);
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            navigation.navigate(route.name, route.params);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
         };
 
         return (
-          <TouchableOpacity
+          <Pressable
             key={index}
             accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
             onPress={onPress}
-            className="flex-1 items-center justify-center gap-2">
-            <View className={cn("p-3", isActive && "bg-primary rounded-full")}>
-              <item.icon
-                className={cn(
-                  "w-8 h-8 text-gray-500",
-                  isActive && "text-white"
-                )}
-              />
-            </View>
-          </TouchableOpacity>
+            onLongPress={onLongPress}
+            className="flex items-center">
+            {options.tabBarIcon && options.tabBarIcon}
+            <Text className={cn(isFocused ? 'text-primary' : 'text-foreground')}>{label}</Text>
+          </Pressable>
         );
       })}
     </View>

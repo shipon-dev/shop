@@ -4,11 +4,10 @@ import { Button } from '~/components/ui/button';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, router } from 'expo-router';
-import { EyeOff } from 'lucide-react-native';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import FormInput from '~/appcomponents/forms/formInput';
-import { Eye } from '~/components/Icons';
+import { Eye, EyeOff } from '~/components/Icons';
 import AuthLayout from '~/appcomponents/auth/authLayout';
 
 const formSchema = z.object({
@@ -35,7 +34,7 @@ export default function Signin() {
     try {
       setIsLoading(true);
       console.log(data);
-      router.push('/(main)');
+      router.push('/(main)/(drawer)/(tabs)/home');
     } catch (error) {
       console.log(error);
     } finally {
@@ -87,7 +86,7 @@ export default function Signin() {
               </View>
               <Text className="text-lg text-muted-foreground text-center">
                 Don't have an account?{' '}
-                <Link href={'/old/(drawer)/(tabs)/profile'} className="text-primary">
+                <Link href={'/(main)/(drawer)/(tabs)/home'} className="text-primary">
                   Sign Up
                 </Link>
               </Text>

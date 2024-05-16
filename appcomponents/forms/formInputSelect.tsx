@@ -62,7 +62,7 @@ const FormInputSelect = ({
               defaultValue={{ value: defaultValue, label: defaultValue }}
               onValueChange={onChange}
               className={cn(disabled && 'opacity-50 pointer-events-none')}>
-              <SelectTrigger className="w-full" onLayout={onLayout}>
+              <SelectTrigger className="w-full web:focus-visible:ring-0" onLayout={onLayout}>
                 <SelectValue
                   className="text-foreground text-sm native:text-lg"
                   placeholder={placeholder}

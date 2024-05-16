@@ -65,7 +65,7 @@ const FormInput = ({
               nativeID={id}
               ref={ref}
               className={cn(
-                'border-none border-0 flex-1',
+                'border-none border-0 flex-1 web:focus-visible:ring-0',
                 multiline && 'min-h-28 h-28 native:h-28',
                 readOnly && 'bg-muted text-foreground/50'
               )}

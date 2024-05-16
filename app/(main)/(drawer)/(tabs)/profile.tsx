@@ -1,17 +1,25 @@
-import { Info } from 'lucide-react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import Animated, { FadeInUp, FadeOutDown, LayoutAnimationConfig } from 'react-native-reanimated';
+import { AlertDialogScreen } from '~/appcomponents/alertDialogScreen';
+import { Info } from '~/components/Icons';
+import { AlertDialogAction, AlertDialogCancel } from '~/components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Button } from '~/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { Progress } from '~/components/ui/progress';
 import { Text } from '~/components/ui/text';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
+import useProfile from '~/lib/hooks/useProfile';
 import { ThemeSwitcher } from '~/themes/ThemeSwitcher';
 
 export default function index() {
   const [progress, setProgress] = useState(78);
+  const { isOpen, setIsOpen } = useProfile();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, []);
 
   function updateProgressValue() {
     setProgress(Math.floor(Math.random() * 100));
@@ -20,9 +28,25 @@ export default function index() {
   const GITHUB_AVATAR_URI = 'https://avatars.githubusercontent.com/u/85027552?v=4';
   return (
     <ScrollView className="flex-1 bg-background">
-      <View>
-        <ThemeSwitcher />
-      </View>
+      <AlertDialogScreen
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title="Are sure you want to logout"
+        subtitle="You will be logged out from the app"
+        action={
+          <>
+            <AlertDialogCancel>
+              <Text>No</Text>
+            </AlertDialogCancel>
+            <AlertDialogAction
+              onPress={() => {
+                console.log('logout');
+              }}>
+              <Text>Yes</Text>
+            </AlertDialogAction>
+          </>
+        }
+      />
       <View className="flex flex-1 items-center justify-center gap-5 py-5">
         <Card className="w-full max-w-sm p-6 rounded-2xl border">
           <CardHeader className="items-center">
@@ -46,7 +70,6 @@ export default function index() {
               </Tooltip>
             </View>
           </CardHeader>
-
           <CardFooter className="flex-col gap-3 pb-0">
             <View className="flex-row items-center overflow-hidden">
               <Text className="text-sm text-muted-foreground">Productivity:</Text>
@@ -67,6 +90,9 @@ export default function index() {
             </Button>
           </CardFooter>
         </Card>
+      </View>
+      <View>
+        <ThemeSwitcher />
       </View>
     </ScrollView>
   );
