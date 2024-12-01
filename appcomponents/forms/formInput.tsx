@@ -25,7 +25,7 @@ const FormInput = ({
   name: string;
   label?: string;
   id: string;
-  placeholder: string;
+  placeholder?: string;
   readOnly?: boolean;
   maxLength?: number;
   ref?: any;

@@ -18,6 +18,7 @@ import {
   BookMarked,
   Search,
   MoreVertical,
+  Settings,
 } from 'lucide-react-native';
 import { cssInterop } from 'nativewind';
 
@@ -54,6 +55,7 @@ const icons = [
   BookMarked,
   Search,
   MoreVertical,
+  Settings,
 ];
 icons.forEach((icon) => interopIcon(icon));
 
@@ -76,4 +78,5 @@ export {
   BookMarked,
   Search,
   MoreVertical,
+  Settings,
 };

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { FlatList, Image, Pressable, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import Post from '~/appcomponents/main/home/post';
 import { Trending } from '~/appcomponents/main/home/trending';
 import { Search } from '~/components/Icons';
@@ -55,7 +55,8 @@ const Home = () => {
               </View>
             </View>
             <View className="p-5">
-              <View
+              <Pressable
+                onPress={inputPress}
                 className={cn(
                   'relative flex-row w-full border border-input rounded-xl h-16 native:h-16 overflow-hidden items-center bg-accent'
                 )}>
@@ -73,7 +74,7 @@ const Home = () => {
                     <Search className="text-primary w-6 h-6" />
                   </View>
                 </Pressable>
-              </View>
+              </Pressable>
             </View>
             <View>
               <Text className="text-lg text-muted-foreground font-medium p-5">Latest Videos</Text>

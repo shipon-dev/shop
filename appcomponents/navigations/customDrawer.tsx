@@ -2,7 +2,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { usePathname, useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { Bell, Home, Info, LogOut, User } from '~/components/Icons';
+import { Info, LogOut, Settings } from '~/components/Icons';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { CardDescription, CardTitle } from '~/components/ui/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
@@ -17,25 +17,15 @@ export default function CustomDrawer(props: any) {
 
   const menu = [
     {
-      icon: Home,
-      title: 'Home',
-      link: '/',
-    },
-    {
-      icon: User,
-      title: 'Profile',
-      link: '/profile',
-    },
-    {
-      icon: Bell,
-      title: 'Notifications',
-      link: '/notifications',
+      icon: Settings,
+      title: 'Settings',
+      link: '/settings',
     },
   ];
 
   return (
     <>
-      <View className="flex-1 ">
+      <View className="flex-1 bg-background">
         <DrawerContentScrollView>
           <View className="flex flex-row gap-5 items-center justify-start border-b-2 border-muted mx-2 pb-5 mb-5">
             <Avatar alt="Shipon" className="w-20 h-20">

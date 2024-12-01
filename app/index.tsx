@@ -32,7 +32,7 @@ const Home = () => {
         <Text className="text-accent-foreground text-center text-lg max-w-96">
           Where Creativity Meets Innovation: Embark on a Journey of Limitless Exploration with Aora
         </Text>
-        <Button size={'lg'} onPress={() => router.push('/(main)/(drawer)/(tabs)/home')}>
+        <Button size={'lg'} onPress={() => router.push('/(main)/(drawer)/(tabs)/profile')}>
           <Text className="text-white font-semibold text-lg">Continue with Email</Text>
         </Button>
       </View>
